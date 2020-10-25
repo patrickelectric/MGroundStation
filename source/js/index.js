@@ -2,6 +2,10 @@
 var loaded_pages = [];
 var current_page = undefined;
 
+function get_websocket_prefix() {
+    return window.location.protocol == "https:" ? "wss" : "ws";
+}
+
 $(function () {
     var hash = location.hash;
     var target = hash.length > 0 ? hash.substr(1) : "dashboard";

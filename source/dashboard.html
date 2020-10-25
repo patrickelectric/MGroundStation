@@ -67,7 +67,7 @@
         },
         methods: {
             start_websocket: function () {
-                const servo_ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=ATTITUDE");
+                const servo_ws = new WebSocket(`${get_websocket_prefix()}://0.0.0.0:8088/ws/mavlink?filter=ATTITUDE`);
                 servo_ws.onmessage = function (message) {
                     const json = JSON.parse(message.data)
                     this.roll = json.roll * 180 / Math.PI
@@ -202,7 +202,7 @@
         },
         methods: {
             start_websocket: function () {
-                const servo_ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=SERVO_OUTPUT_RAW");
+                const servo_ws = new WebSocket(`${get_websocket_prefix()}://0.0.0.0:8088/ws/mavlink?filter=SERVO_OUTPUT_RAW`);
                 servo_ws.onmessage = function (message) {
                     const json = JSON.parse(message.data)
 
@@ -216,14 +216,14 @@
                     this.$forceUpdate()
                 }.bind(this);
 
-                const gps_ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=GLOBAL_POSITION_INT");
+                const gps_ws = new WebSocket(`${get_websocket_prefix()}://0.0.0.0:8088/ws/mavlink?filter=GLOBAL_POSITION_INT`);
                 gps_ws.onmessage = function (message) {
                     const json = JSON.parse(message.data)
 
                     update_location(json.lat / 10e6, json.lon / 10e6)
                 }.bind(this);
 
-                const battery_ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=BATTERY_STATUS");
+                const battery_ws = new WebSocket(`${get_websocket_prefix()}://0.0.0.0:8088/ws/mavlink?filter=BATTERY_STATUS`);
                 battery_ws.onmessage = function (message) {
                     const json = JSON.parse(message.data)
 

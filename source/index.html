@@ -133,7 +133,7 @@
             },
             methods: {
                 start_websocket: function () {
-                    const ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=HEARTBEAT");
+                    const ws = new WebSocket(`${get_websocket_prefix()}://0.0.0.0:8088/ws/mavlink?filter=HEARTBEAT`);
                     ws.onmessage = function (message) {
                         const json = JSON.parse(message.data)
 
