@@ -21,8 +21,8 @@ httpd = http.server.HTTPServer(address, Handler)
 try:
     httpd.socket = ssl.wrap_socket(
         httpd.socket,
-        certfile=os.path.join(script_dir, "cert.pem"),
-        keyfile=os.path.join(script_dir, "key.pem"),
+        certfile=os.path.join(script_dir, "localhost.crt"),
+        keyfile=os.path.join(script_dir, "localhost.key"),
         server_side=True,
     )
 except Exception as error:
