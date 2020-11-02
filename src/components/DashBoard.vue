@@ -87,11 +87,29 @@
 
 <script>
 import 'uplot/dist/uPlot.iife.js'
-import 'uplot/dist/uPlot.min.css'
+import {uPlot} from 'uplot'
 
-var total_points = 1000;
+export default {
+    name: 'Dashboard',
+    created () {
+    },
+    data () {
+        return {
+            name: 'MessageViewer',
+            total_points: 1000,
+            data: [Array(total_points), Array(total_points), Array(total_points)]
+        }
+    },
+    methods: {
 
-let data = [Array(total_points), Array(total_points), Array(total_points)];
+    },
+    computed: {
+
+    },
+    watch: {
+
+    }
+}
 
 for (var i = 0; i < total_points; i++) {
   data[0][i] = i;
@@ -159,7 +177,8 @@ const opts = {
 };
 
 let uplot1 = new uPlot(opts, data, vibration_dom);
-
+console.log(uplot1)
+/*
 const update_plot = function (time, voltage, current) {
   if (data[0].length > 1000) {
     data[0].shift();
@@ -196,4 +215,5 @@ var update_location = function (lat, lon) {
   marker.setLatLng([lat, lon]);
   map.setView(marker.getLatLng(), map.getZoom());
 };
+*/
 </script>
