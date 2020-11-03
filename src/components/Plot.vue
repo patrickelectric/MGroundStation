@@ -1,5 +1,5 @@
 <template>
-    <div id="power-plot" style="width:100%;height:100%"></div>
+  <div id="power-plot" style="width: 100%; height: 100%"></div>
 </template>
 
 <script>
@@ -37,20 +37,26 @@ export default {
     this.setupPlot();
     // TODO: find a right way to make it responsive
 
-      const battery_ws = new WebSocket(`ws://localhost:8088/ws/mavlink?filter=BATTERY_STATUS`);
-      battery_ws.onmessage = function (message) {
-          const json = JSON.parse(message.data)
+    const battery_ws = new WebSocket(
+      `ws://localhost:8088/ws/mavlink?filter=BATTERY_STATUS`
+    );
+    battery_ws.onmessage = function (message) {
+      const json = JSON.parse(message.data);
 
-          let final_voltage = 0
-          for (let voltage of json.voltages) {
-              if (voltage == 65535) {
-                  continue
-              }
-              final_voltage += voltage
-          }
+      let final_voltage = 0;
+      for (let voltage of json.voltages) {
+        if (voltage == 65535) {
+          continue;
+        }
+        final_voltage += voltage;
+      }
 
-          this.updatePlot(json.message_information.counter, final_voltage/1e3, json.current_battery/1e2)
-      }.bind(this);
+      this.updatePlot(
+        json.message_information.counter,
+        final_voltage / 1e3,
+        json.current_battery / 1e2
+      );
+    }.bind(this);
   },
   methods: {
     updatePlot(time, voltage, current) {
@@ -66,10 +72,12 @@ export default {
 
       this.plot1.setData(this.plotdata);
     },
-    getSize () {
-        let { width, height } = document.getElementById("power-plot").getBoundingClientRect();
-        return { width: width, height: height == 0 ? 300 : 300 };
-      },
+    getSize() {
+      let { width, height } = document
+        .getElementById("power-plot")
+        .getBoundingClientRect();
+      return { width: width, height: height == 0 ? 300 : 300 };
+    },
     setupPlot() {
       const opts = {
         ...this.getSize(),
@@ -122,7 +130,11 @@ export default {
           },
         ],
       };
-      this.plot1 = new uPlot(opts, this.plotdata, document.getElementById("power-plot"));
+      this.plot1 = new uPlot(
+        opts,
+        this.plotdata,
+        document.getElementById("power-plot")
+      );
     },
   },
   computed: {},
