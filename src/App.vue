@@ -85,6 +85,7 @@
         style="overflow-y: auto"
       >
         <DashBoard />
+        <Parameters />
       </div>
     </div>
   </div>
@@ -97,13 +98,14 @@ import "uplot/dist/uPlot.min.css";
 
 import NavBar from "./components/NavBar.vue";
 import DashBoard from "./components/DashBoard.vue";
-
+import Parameters from "./components/Parameters.vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
     DashBoard,
+    Parameters,
   },
 };
 </script>
