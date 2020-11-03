@@ -8,10 +8,16 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue-leaflet/vue-leaflet": "^0.3.0",
     "core-js": "^3.6.5",
+    "install": "^0.13.0",
+    "latlng": "^1.0.0",
+    "leaflet": "^1.7.1",
     "metro4": "^4.4.1",
     "uplot": "^1.2.2",
-    "vue": "^3.0.2"
+    "vue": "^3.0.2",
+    "vue-flight-indicators": "^0.1.1",
+    "vue-leaflet": "^0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

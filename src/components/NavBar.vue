@@ -1,104 +1,22 @@
 <template>
-  <div
-    data-role="navview"
-    data-toggle="#paneToggle"
-    data-expand="xl"
-    data-compact="lg"
-    data-active-state="true"
-  >
-    <div class="navview-pane">
-      <div class="bg-cyan d-flex flex-align-center">
-        <button class="pull-button m-0 bg-darkCyan-hover">
-          <span class="mif-menu fg-white"></span>
-        </button>
-        <h3 class="text-light m-0 fg-white text-bold">MGroundstation</h3>
-      </div>
+             <div data-role="appbar" class="pos-absolute bg-darkCyan fg-white">
 
-      <ul class="navview-menu" id="side-menu">
-        <li class="item-header">MAIN NAVIGATION</li>
-        <li>
-          <a href="#dashboard">
-            <span class="icon"><span class="mif-meter"></span></span>
-            <span class="caption">Dashboard</span>
-          </a>
-        </li>
+                <a href="#" class="app-bar-item d-block d-none-lg" id="paneToggle"><span class="mif-menu"></span></a>
 
-        <li>
-          <a href="#parameters">
-            <span class="icon"><span class="mif-table"></span></span>
-            <span class="caption">Parameters</span>
-          </a>
-        </li>
+                <div class="app-bar-container ml-auto">
+                    <div v-if="Object.keys(heartbeat).length != 0">Vehicle: {{heartbeat.mavtype.type.substring(9)}} - {{valid ? "ONLINE" : "OFFLINE"}}
+                    </div>
+                    <a href="#" class="app-bar-item">
+                        <span class="mif-flag"></span>
+                        <span class="badge bg-red fg-white mt-2 mr-1">9</span>
+                    </a>
 
-        <li class="item-header">Documentation</li>
-        <li>
-          <a href="https://google.com">
-            <span class="icon"><span class="mif-books fg-red"></span></span>
-            <span class="caption">Documentation</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://google.com">
-            <span class="icon"><span class="mif-info"></span></span>
-            <span class="caption">About</span>
-          </a>
-        </li>
-      </ul>
+                    <a href="#" class="app-bar-item">
+                        <span class="mif-cogs"></span>
+                    </a>
+                </div>
+            </div>
 
-      <div
-        class="w-100 text-center text-small data-box p-2 border-top bd-grayMouse"
-        style="position: absolute; bottom: 0"
-      >
-        <div>
-          &copy; 2020
-          <a href="mailto:patrick" class="text-muted fg-white-hover no-decor"
-            >Patrick José Pereira</a
-          >
-        </div>
-        <div>
-          Based on Pandora by: &copy; 2019
-          <a class="text-muted fg-white-hover no-decor">Sergey Pimenov</a>
-        </div>
-        <div>
-          Created with
-          <a
-            href="https://metroui.org.ua"
-            class="text-muted fg-white-hover no-decor"
-            >Metro 4</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <div id="app-header" class="navview-content h-100">
-      <div data-role="appbar" class="pos-absolute bg-darkCyan fg-white">
-        <a href="#" class="app-bar-item d-block d-none-lg" id="paneToggle"
-          ><span class="mif-menu"></span
-        ></a>
-
-        <div class="app-bar-container ml-auto">
-          <div v-if="Object.keys(heartbeat).length != 0">
-            Vehicle: {{ heartbeat.mavtype.type.substring(9) }} -
-            {{ valid ? "ONLINE" : "OFFLINE" }}
-          </div>
-          <a href="#" class="app-bar-item">
-            <span class="mif-flag"></span>
-            <span class="badge bg-red fg-white mt-2 mr-1">9</span>
-          </a>
-
-          <a href="#" class="app-bar-item">
-            <span class="mif-cogs"></span>
-          </a>
-        </div>
-      </div>
-
-      <div
-        id="content-wrapper"
-        class="content-inner h-100"
-        style="overflow-y: auto"
-      ></div>
-    </div>
-  </div>
 </template>
 
 <script>

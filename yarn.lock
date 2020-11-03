@@ -1114,6 +1114,11 @@
     "@types/webpack-sources" "*"
     source-map "^0.6.0"
 
+"@vue-leaflet/vue-leaflet@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@vue-leaflet/vue-leaflet/-/vue-leaflet-0.3.0.tgz#78564789594c71707734b3e0a0be222c31bd2ce5"
+  integrity sha512-aW9RgxgajAs8rnTjI3/NPGCCZltissH1p/h7BfSRzv7UkcWReqC8HLVxeasUuu9gi4M1FPf+whNFl7uVn2Omtw==
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.2.1.tgz#31624a7a505fb14da1d58023725a4c5f270e6a81"
@@ -4724,6 +4729,11 @@ inquirer@^7.1.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
+
 internal-ip@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-4.3.0.tgz#845452baad9d2ca3b69c635a137acb9a0dad0907"
@@ -5215,6 +5225,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
+latlng@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/latlng/-/latlng-1.0.0.tgz#b41bcfc656ce42bec89a08001ca60c55c99b1204"
+  integrity sha1-tBvPxlbOQr7ImggAHKYMVcmbEgQ=
+
 launch-editor-middleware@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/launch-editor-middleware/-/launch-editor-middleware-2.2.1.tgz#e14b07e6c7154b0a4b86a0fd345784e45804c157"
@@ -5229,6 +5244,11 @@ launch-editor@^2.2.1:
   dependencies:
     chalk "^2.3.0"
     shell-quote "^1.6.1"
+
+leaflet@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.7.1.tgz#10d684916edfe1bf41d688a3b97127c0322a2a19"
+  integrity sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==
 
 levn@^0.4.1:
   version "0.4.1"
@@ -8301,10 +8321,20 @@ vue-eslint-parser@^7.1.1:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
+vue-flight-indicators@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vue-flight-indicators/-/vue-flight-indicators-0.1.1.tgz#468e3499468a67cea8879d4621c25eab743f8e56"
+  integrity sha512-Qwu7IMl2/IRiB7mtyi5C/rt+ty4jJNkvsjCU8GiuFNp2NcYGaQlUhzQmIeQBbjgTBA/Tnh0sy+rQXjIp7rymeA==
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
+
+vue-leaflet@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vue-leaflet/-/vue-leaflet-0.1.0.tgz#eaa23ee52468a2aee4466df422c181131ad054ac"
+  integrity sha1-6qI+5SRooq7kRm30IsGBExrQVKw=
 
 "vue-loader-v16@npm:vue-loader@^16.0.0-beta.7":
   version "16.0.0-beta.9"
