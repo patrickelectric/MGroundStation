@@ -137,9 +137,9 @@ export default {
     );
     att_ws.onmessage = function (message) {
       const json = JSON.parse(message.data);
-      this.roll = 57.324840764 * json.roll;
-      this.pitch = 57.324840764 * json.pitch;
-      this.yaw = 57.324840764 * json.yaw;
+      this.roll = json.roll * 180 / Math.PI;
+      this.pitch = json.pitch * 180 / Math.PI;
+      this.yaw = json.yaw * 180 / Math.PI;
     }.bind(this);
   },
 };

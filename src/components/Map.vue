@@ -1,26 +1,14 @@
 <template>
+  <l-map v-model="zoom" v-model:zoom="zoom" v-bind:center="position">
+    <l-tile-layer
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    ></l-tile-layer>
 
-    <l-map
-      v-model="zoom"
-      v-model:zoom="zoom"
-      :center="position"
-    >
-      <l-tile-layer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      ></l-tile-layer>
-
-      <l-marker :lat-lng="position">
-      </l-marker>
-    </l-map>
+    <l-marker v-bind:lat-lng="position"> </l-marker>
+  </l-map>
 </template>
 <script>
-import {
-  LMap,
-  LMarker,
-  LTileLayer,
-} from "@vue-leaflet/vue-leaflet";
-
-import L from 'leaflet';
+import { LMap, LMarker, LTileLayer } from "@vue-leaflet/vue-leaflet";
 
 import "leaflet/dist/leaflet.css";
 
@@ -35,25 +23,17 @@ export default {
       zoom: 2,
       iconWidth: 25,
       iconHeight: 40,
-      position: [0.0, 0.0]
+      position: [27.5938477, -48.5670448],
     };
   },
   mounted() {
-    window.latLng = L.latLng;
-    //const gps_ws = new WebSocket(`ws://localhost:8088/ws/mavlink?filter=GLOBAL_POSITION_INT`);
-    // gps_ws.onmessage = function (message) {
-      // TODO: THIS IS BUGGED IN THE LIBRARY SIDE!
-      //const json = JSON.parse(message.data)
-      //this.position = L.latLng([json.lat / 10e6, json.lon / 10e6])
-
-    // }.bind(this);
-  },
-  computed: {
-  },
-  methods: {
-    log(a) {
-      console.log(a);
-    },
+    const gps_ws = new WebSocket(
+      `ws://localhost:8088/ws/mavlink?filter=GLOBAL_POSITION_INT`
+    );
+    gps_ws.onmessage = function (message) {
+      const json = JSON.parse(message.data);
+      this.position = [json.lat / 10e6, json.lon / 10e6];
+    }.bind(this);
   },
 };
 </script>

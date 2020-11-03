@@ -1,5 +1,5 @@
 <template>
-    <div id="vibration" style="width:100%;height:100%"></div>
+    <div id="power-plot" style="width:100%;height:100%"></div>
 </template>
 
 <script>
@@ -67,7 +67,7 @@ export default {
       this.plot1.setData(this.plotdata);
     },
     getSize () {
-        let { width, height } = document.getElementById("vibration").getBoundingClientRect();
+        let { width, height } = document.getElementById("power-plot").getBoundingClientRect();
         return { width: width, height: height == 0 ? 300 : 300 };
       },
     setupPlot() {
@@ -122,7 +122,7 @@ export default {
           },
         ],
       };
-      this.plot1 = new uPlot(opts, this.plotdata, document.getElementById("vibration"));
+      this.plot1 = new uPlot(opts, this.plotdata, document.getElementById("power-plot"));
     },
   },
   computed: {},
