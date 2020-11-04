@@ -18,13 +18,18 @@
     "vue-flight-indicators": "^0.1.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.12.1",
-    "eslint-plugin-vue": "^7.1.0"
+    "eslint-plugin-vue": "^7.1.0",
+    "typescript": "~3.9.3"
   },
   "eslintConfig": {
     "root": true,
@@ -35,20 +40,29 @@
       "plugin:vue/base",
       "plugin:vue/vue3-strongly-recommended",
       "plugin:vue/vue3-essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@typescript-eslint/parser"
     },
     "rules": {
       "indent": [
         "error",
         4
       ],
-      "camelcase": [2, {
-        "properties": "never"
-      }],
-      "max-len": ["error", 120, 2, {}],
+      "camelcase": [
+        2,
+        {
+          "properties": "never"
+        }
+      ],
+      "max-len": [
+        "error",
+        120,
+        2,
+        {}
+      ],
       "linebreak-style": [
         "error",
         "unix"

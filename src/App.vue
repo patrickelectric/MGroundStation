@@ -128,7 +128,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import "metro4/build/js/metro.min.js"
 import "metro4/build/css/metro-all.min.css"
 import "uplot/dist/uPlot.min.css"
@@ -136,8 +136,9 @@ import "uplot/dist/uPlot.min.css"
 import NavBar from "./components/NavBar.vue"
 import DashBoard from "./components/DashBoard.vue"
 import Parameters from "./components/Parameters.vue"
+import { defineComponent } from "vue"
 
-export default {
+export default defineComponent({
     name: "App",
     components: {
         NavBar,
@@ -150,11 +151,11 @@ export default {
         }
     },
     methods: {
-        setPage(name) {
+        setPage(name: string) {
             this.page = name
         }
     }
-}
+})
 </script>
 
 <style>

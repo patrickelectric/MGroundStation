@@ -11,12 +11,14 @@
     <l-marker :lat-lng="position" />
   </l-map>
 </template>
-<script>
+<script lang="ts">
 import { LMap, LMarker, LTileLayer } from "@vue-leaflet/vue-leaflet"
 
 import "leaflet/dist/leaflet.css"
 
-export default {
+import { defineComponent } from "vue"
+
+export default defineComponent({
     components: {
         LMap,
         LTileLayer,
@@ -34,10 +36,10 @@ export default {
         const gpsWs = new WebSocket(
             "ws://localhost:8088/ws/mavlink?filter=GLOBAL_POSITION_INT"
         )
-        gpsWs.onmessage = function (message) {
+        gpsWs.onmessage = (message: MessageEvent) => {
             const json = JSON.parse(message.data)
             this.position = [json.lat / 10e6, json.lon / 10e6]
-        }.bind(this)
+        }
     },
-}
+})
 </script>

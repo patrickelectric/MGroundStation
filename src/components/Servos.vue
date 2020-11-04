@@ -28,13 +28,14 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue"
+export default defineComponent({
     name: "Servos",
 
     data() {
         return {
-            servos: [],
+            servos: [] as Array<number> ,
         }
     },
 
@@ -44,7 +45,7 @@ export default {
         const servoWs = new WebSocket(
             "ws://0.0.0.0:8088/ws/mavlink?filter=SERVO_OUTPUT_RAW"
         )
-        servoWs.onmessage = function (message) {
+        servoWs.onmessage = (message: MessageEvent) => {
             const json = JSON.parse(message.data)
             for (var i = 1; i <= Object.keys(json).length - 4; i++) {
                 const name = `servo${i}_raw`
@@ -57,7 +58,7 @@ export default {
           ((json[name] - 1100) * 100) / (1900 - 1100)
             }
             this.$forceUpdate()
-        }.bind(this)
+        }
     },
-}
+})
 </script>

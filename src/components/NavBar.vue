@@ -32,8 +32,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue"
+
+export default defineComponent({
     data() {
         return {
             heartbeat: {},
@@ -44,10 +46,10 @@ export default {
     mounted: function () {
         this.start_websocket()
         setInterval(
-            function () {
+            () => {
                 this.valid = this.heartbeat != this.old_heartbeat
                 this.old_heartbeat = this.heartbeat
-            }.bind(this),
+            },
             2000
         )
     },
@@ -55,14 +57,14 @@ export default {
     methods: {
         start_websocket: function () {
             const ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=HEARTBEAT")
-            ws.onmessage = function (message) {
+            ws.onmessage = (message) => {
                 const json = JSON.parse(message.data)
 
                 this.old_heartbeat = this.heartbeat
                 this.heartbeat = json
                 this.valid = true
-            }.bind(this)
+            }
         },
     },
-}
+})
 </script>
