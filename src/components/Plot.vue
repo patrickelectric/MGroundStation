@@ -5,17 +5,18 @@
   />
 </template>
 
-<script>
+<script lang="ts">
 import uPlot from "uplot"
 
-export default {
+import { defineComponent } from "vue"
+
+export default defineComponent({
     name: "Plot",
 
     data() {
         return {
-            plotdata: [],
-            plot1: null,
-            servos: [],
+            plotdata: [] as  Array<Array<number>>,
+            plot1: null as unknown as uPlot,
         }
     },
     computed: {},
@@ -45,7 +46,7 @@ export default {
         const batteryWs = new WebSocket(
             "ws://localhost:8088/ws/mavlink?filter=BATTERY_STATUS"
         )
-        batteryWs.onmessage = function (message) {
+        batteryWs.onmessage = (message: MessageEvent) => {
             const json = JSON.parse(message.data)
 
             let finalVoltage = 0
@@ -61,10 +62,10 @@ export default {
                 finalVoltage / 1e3,
                 json.current_battery / 1e2
             )
-        }.bind(this)
+        }
     },
     methods: {
-        updatePlot(time, voltage, current) {
+        updatePlot(time: number, voltage: number, current: number) {
             if (this.plotdata[0].length > 1000) {
                 this.plotdata[0].shift()
                 this.plotdata[1].shift()
@@ -79,7 +80,7 @@ export default {
         },
         getSize() {
             let { width, height } = document
-                .getElementById("power-plot")
+                .getElementById("power-plot")!
                 .getBoundingClientRect()
             return { width: width, height: height == 0 ? 300 : 300 }
         },
@@ -134,13 +135,13 @@ export default {
                         grid: { show: false },
                     },
                 ],
-            }
+            } as uPlot.Options
             this.plot1 = new uPlot(
                 opts,
                 this.plotdata,
-                document.getElementById("power-plot")
+                document.getElementById("power-plot")!
             )
         },
     },
-}
+})
 </script>

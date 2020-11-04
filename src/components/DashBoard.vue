@@ -81,13 +81,15 @@
   </div>
 </template>
 
-<script>
-import Map from "./Map"
+<script lang="ts">
+import Map from "./Map.vue"
 import { Attitude, Heading } from "vue-flight-indicators"
-import Plot from "./Plot"
-import Servos from "./Servos"
+import Plot from "./Plot.vue"
+import Servos from "./Servos.vue"
 
-export default {
+import { defineComponent } from "vue"
+
+export default defineComponent({
     name: "Dashboard",
 
     components: {
@@ -100,12 +102,11 @@ export default {
 
     data() {
         return {
-            plotdata: [],
+            plotdata: [] as Array<Array<number>>,
             plot1: null,
-            roll: 0,
-            pitch: 0,
-            yaw: 0,
-            servos: [],
+            roll: 0 as number,
+            pitch: 0 as number,
+            yaw: 0 as number,
         }
     },
 
@@ -127,12 +128,13 @@ export default {
         const attWs = new WebSocket(
             "ws://localhost:8088/ws/mavlink?filter=ATTITUDE"
         )
-        attWs.onmessage = function (message) {
+
+        attWs.onmessage = (message) => {
             const json = JSON.parse(message.data)
             this.roll = (json.roll * 180) / Math.PI
             this.pitch = (json.pitch * 180) / Math.PI
             this.yaw = (json.yaw * 180) / Math.PI
-        }.bind(this)
+        }
     },
-}
+})
 </script>
