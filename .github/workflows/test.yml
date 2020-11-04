@@ -12,4 +12,5 @@ jobs:
         with:
           node-version: '14'
       - run: yarn install
+      - run: yarn check
       - run: yarn run lint --max-warnings=0 --no-fix
