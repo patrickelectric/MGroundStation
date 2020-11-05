@@ -86,6 +86,7 @@ import Map from "./Map.vue"
 import { Attitude, Heading } from "vue-flight-indicators"
 import Plot from "./Plot.vue"
 import Servos from "./Servos.vue"
+import mavlink2rest from "./Mavlink2Rest"
 
 import { defineComponent } from "vue"
 
@@ -125,16 +126,11 @@ export default defineComponent({
     },
 
     mounted() {
-        const attWs = new WebSocket(
-            "ws://localhost:8088/ws/mavlink?filter=ATTITUDE"
-        )
-
-        attWs.onmessage = (message) => {
-            const json = JSON.parse(message.data)
-            this.roll = (json.roll * 180) / Math.PI
-            this.pitch = (json.pitch * 180) / Math.PI
-            this.yaw = (json.yaw * 180) / Math.PI
-        }
+        mavlink2rest.startListening("ATTITUDE").setCallback((message) => {
+            this.roll = (message.roll * 180) / Math.PI
+            this.pitch = (message.pitch * 180) / Math.PI
+            this.yaw = (message.yaw * 180) / Math.PI
+        }).setFrequency(10)
     },
 })
 </script>
