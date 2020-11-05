@@ -30,6 +30,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import mavlink2rest from "./Mavlink2Rest"
+
 export default defineComponent({
     name: "Servos",
 
@@ -42,23 +44,19 @@ export default defineComponent({
     created() {},
 
     mounted() {
-        const servoWs = new WebSocket(
-            "ws://0.0.0.0:8088/ws/mavlink?filter=SERVO_OUTPUT_RAW"
-        )
-        servoWs.onmessage = (message: MessageEvent) => {
-            const json = JSON.parse(message.data)
-            for (var i = 1; i <= Object.keys(json).length - 4; i++) {
+        mavlink2rest.startListening("SERVO_OUTPUT_RAW").setCallback((message) => {
+            for (var i = 1; i <= Object.keys(message).length - 4; i++) {
                 const name = `servo${i}_raw`
                 const index = i - 1
-                if (json[name] == 0) {
+                if (message[name] == 0) {
                     this.servos[index] = -1
                     continue
                 }
                 this.servos[index] =
-          ((json[name] - 1100) * 100) / (1900 - 1100)
+        ((message[name] - 1100) * 100) / (1900 - 1100)
             }
             this.$forceUpdate()
-        }
-    },
+        })
+    }
 })
 </script>

@@ -21,19 +21,41 @@
         <span class="mif-flag" />
         <span class="badge bg-red fg-white mt-2 mr-1">9</span>
       </a>
+      <div class="app-bar-container">
+        <a
+          href="#"
+          class="app-bar-item"
+        >
 
+          <span class="mif-cogs" />
+        </a>
+        <div
+          class="user-block shadow-1"
+          data-role="collapse"
+          data-collapsed="true"
+        >
+          <div class="bg-white d-flex flex-justify-between flex-equal-items p-2 bg-light">
+            <input v-model="baseUrl">
+            <button
+              class="button mr-1"
+              @click="setBaseUrl(this.baseUrl)"
+            >
+              Set
+            </button>
+          </div>
+        </div>
+      </div>
       <a
         href="#"
         class="app-bar-item"
-      >
-        <span class="mif-cogs" />
-      </a>
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import mavlink2rest from "./Mavlink2Rest"
 
 export default defineComponent({
     data() {
@@ -41,10 +63,13 @@ export default defineComponent({
             heartbeat: {},
             old_heartbeat: {},
             valid: false,
+            baseUrl: null as unknown as string
         }
     },
     mounted: function () {
-        this.start_websocket()
+        this.startWebsocket()
+        this.baseUrl = "" + mavlink2rest.baseUrl
+        console.log(mavlink2rest.baseUrl)
         setInterval(
             () => {
                 this.valid = this.heartbeat != this.old_heartbeat
@@ -55,16 +80,40 @@ export default defineComponent({
     },
     updated: function () {},
     methods: {
-        start_websocket: function () {
-            const ws = new WebSocket("ws://0.0.0.0:8088/ws/mavlink?filter=HEARTBEAT")
-            ws.onmessage = (message) => {
-                const json = JSON.parse(message.data)
-
+        startWebsocket: function () {
+            mavlink2rest.startListening("HEARTBEAT").setCallback((message) => {
                 this.old_heartbeat = this.heartbeat
-                this.heartbeat = json
-                this.valid = true
-            }
+                this.heartbeat = message
+            })
         },
+        setBaseUrl: function(newUrl:string): void {
+            mavlink2rest.setBaseUrl(newUrl)
+        }
     },
 })
 </script>
+
+<style lang="scss" scoped>
+
+.user-block {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    line-height: 1.2;
+
+    .avatar {
+        width: 128px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid white;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+</style>
