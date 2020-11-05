@@ -44,7 +44,6 @@
           id="t1"
           class="table table-border cell-border"
           data-role="table"
-          data-source="data/table.json"
           data-search-wrapper="#t1_search"
           data-rows-wrapper="#t1_rows"
           data-info-wrapper="#t1_info"
