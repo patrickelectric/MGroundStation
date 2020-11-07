@@ -55,6 +55,10 @@
         "skipBlankLines": false,
         "ignoreComments": false
       }],
+      "comma-spacing": ["error", {
+        "before": false,
+        "after": true
+      }],
       "indent": [
         "error",
         4
