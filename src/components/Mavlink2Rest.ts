@@ -1,3 +1,5 @@
+import { resolveTransitionHooks } from "vue"
+
 interface Dictionary<T> {
     [key: string]: T;
   }
@@ -72,11 +74,14 @@ class Mavlink2RestManager {
   baseUrl: string;
   // Dictionary mapping endpoints to websocket
   endpoints: Dictionary<Endpoint> = {}
+  baseUrlCandidates: Array<string>
 
   private static instance: Mavlink2RestManager;
 
   private constructor() {
       this.baseUrl = `${this.getWebsocketPrefix()}://${window.location.host}/ws/mavlink`
+      this.baseUrlCandidates = [this.baseUrl, "ws://localhost:8088/ws/mavlink"]
+      this.probeBaseUrlCandidates()
   }
 
   public static getInstance(): Mavlink2RestManager {
@@ -85,6 +90,24 @@ class Mavlink2RestManager {
       }
       return Mavlink2RestManager.instance
   }
+
+  probeBaseUrlCandidates() {
+      for (const url of this.baseUrlCandidates) {
+          const asHttp = url.replace("wss://","https://").replace("ws://","http://").replace("/ws/mavlink","")
+          fetch(asHttp)
+              .then(async res => {
+                  if (res.status === 200) {
+                      const body = (await res.text())
+                      const valid = body.indexOf("List of available paths") !== -1
+                      if (valid) {
+                          this.setBaseUrl(url)
+
+                      }
+                  }
+              })
+      }
+  }
+
 
   setBaseUrl(url: string) {
       // close all websockets and discard them
