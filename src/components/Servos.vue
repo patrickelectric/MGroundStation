@@ -37,7 +37,7 @@ export default defineComponent({
 
     data() {
         return {
-            servos: [] as Array<number> ,
+            servos: [] as Array<number>,
         }
     },
 
