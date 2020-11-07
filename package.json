@@ -49,6 +49,10 @@
       "parser": "@typescript-eslint/parser"
     },
     "rules": {
+      "no-trailing-spaces": ["error", {
+        "skipBlankLines": false,
+        "ignoreComments": false
+      }],
       "indent": [
         "error",
         4
