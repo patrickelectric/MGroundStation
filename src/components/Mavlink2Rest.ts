@@ -93,7 +93,7 @@ class Mavlink2RestManager {
 
   probeBaseUrlCandidates() {
       for (const url of this.baseUrlCandidates) {
-          const asHttp = url.replace("wss://","https://").replace("ws://","http://").replace("/ws/mavlink","")
+          const asHttp = url.replace("wss://", "https://").replace("ws://", "http://").replace("/ws/mavlink", "")
           fetch(asHttp)
               .then(async res => {
                   if (res.status === 200) {
