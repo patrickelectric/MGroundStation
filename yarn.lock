@@ -4429,6 +4429,14 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
+gamepad.js@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gamepad.js/-/gamepad.js-1.0.3.tgz#d44409b33c5bd03b1e21c8f19ba32684c60393af"
+  integrity sha512-wBrPAWcM2IbASfzC+alcQZvVoNyQ9fXyK2MTvxNqrybaO1vCKGfoBikO3+47DlZKCgOaYj0/wmAlDzfaU1yD0g==
+  dependencies:
+    option-resolver.js "^0.1.1"
+    tom32i-event-emitter.js "^2.0.4"
+
 gauge@~2.7.3:
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/gauge/-/gauge-2.7.4.tgz#2c03405c7538c39d7eb37b317022e325fb018bf7"
@@ -6566,6 +6574,11 @@ opn@^5.5.0:
   integrity sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==
   dependencies:
     is-wsl "^1.1.0"
+
+option-resolver.js@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/option-resolver.js/-/option-resolver.js-0.1.1.tgz#0d30aed33f8df68aade5ce5ff44a943089f11ab8"
+  integrity sha512-p9wIVX2gUAwYPlSHf3k12uov/8y7j4ly4S3bmDa8btCuN3BnA/Nt+lkPKiDy/7iJQvq5B+NnssR3Z+7GuTc4wg==
 
 optionator@^0.8.3:
   version "0.8.3"
@@ -8732,6 +8745,11 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+
+tom32i-event-emitter.js@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/tom32i-event-emitter.js/-/tom32i-event-emitter.js-2.0.4.tgz#bfac50b8a0d0f09907a06943392bb8fcdb359e94"
+  integrity sha512-uNJdsOSjFBPH22YtwNbR6vEDVad1ko2NycqpMSZxGZjLYvaLUxHpPAM8C2ePJHZAJ8ipMTmnItOLnYcxvuT+Yw==
 
 toposort@^1.0.0:
   version "1.0.7"
