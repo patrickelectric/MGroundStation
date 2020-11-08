@@ -51,6 +51,17 @@
             </a>
           </li>
 
+          <li>
+            <a
+              href="#joystick"
+              data-ytta-id="-"
+              @click="setPage('Joystick')"
+            >
+              <span class="icon"><span class="mif-gamepad" /></span>
+              <span class="caption">Joystick</span>
+            </a>
+          </li>
+
           <li class="item-header">
             Documentation
           </li>
@@ -123,6 +134,12 @@
         >
           <Parameters />
         </div>
+        <div
+          v-show="page == 'Joystick'"
+          class="fill"
+        >
+          <Joystick />
+        </div>
       </div>
     </div>
   </div>
@@ -136,6 +153,7 @@ import "uplot/dist/uPlot.min.css"
 import NavBar from "./components/NavBar.vue"
 import DashBoard from "./components/DashBoard.vue"
 import Parameters from "./components/Parameters.vue"
+import Joystick from "./components/Joystick.vue"
 import { defineComponent } from "vue"
 
 export default defineComponent({
@@ -144,6 +162,7 @@ export default defineComponent({
         NavBar,
         DashBoard,
         Parameters,
+        Joystick,
     },
     data() {
         return {
