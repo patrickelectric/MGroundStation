@@ -12,6 +12,7 @@
     "@vue-leaflet/vue-leaflet": "^0.1.2",
     "@vue/cli-plugin-pwa": "^4.5.8",
     "core-js": "^3.6.5",
+    "gamepad.js": "^1.0.3",
     "install": "^0.13.0",
     "leaflet": "^1.7.1",
     "metro4": "^4.4.1",
