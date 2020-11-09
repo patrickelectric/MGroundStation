@@ -20,6 +20,10 @@ class Listener {
         return this
     }
 
+    write (data: string) {
+        this.parent.write(data)
+    }
+
     setFrequency(frequency: number): Listener {
         clearInterval(this.interval) // Seems harmless on initialization
         this.interval = window.setInterval(() => {
@@ -54,9 +58,22 @@ class Endpoint {
   createSocket(url: string): WebSocket {
       const socket = new WebSocket(url)
       socket.onmessage = (message: MessageEvent) => {
-          this.latestData = JSON.parse(message.data)
+          try {
+              this.latestData = JSON.parse(message.data)
+          } catch(e)
+          {
+              console.log(e)
+          }
       }
       return socket
+  }
+
+  write (data: string) {
+      if(this.socket.readyState !== this.socket.OPEN) {
+          console.log("Socket is not open, ignoring message...")
+          return
+      }
+      this.socket.send(data)
   }
 
   addListener() {

@@ -154,6 +154,7 @@ import NavBar from "./components/NavBar.vue"
 import DashBoard from "./components/DashBoard.vue"
 import Parameters from "./components/Parameters.vue"
 import Joystick from "./components/Joystick.vue"
+import "./lib/joystick/joystickHandler"
 import { defineComponent } from "vue"
 
 export default defineComponent({
