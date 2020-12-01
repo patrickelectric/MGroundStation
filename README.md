@@ -2,15 +2,18 @@
 
 Demo in: https://patrickelectric.work/MGroundStation/
 
-## Running it
-1. Create SSL key (optional):
-    ```
-    openssl req -x509 -out localhost.crt -keyout localhost.key \
-    -newkey rsa:2048 -nodes -sha256 \
-    -subj '/CN=localhost' -extensions EXT -config <( \
-    printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
-    ```
-    - Enable insecure ssl in chrome: `chrome://flags/#allow-insecure-localhost`
+## Run:
 
-2. Run main.py:
-    - `./main.py`
+1. `yarn install`
+2. `yarn serve`
+3. Done!
+
+## Deploy:
+
+1. `yarn build`
+2. The files will be in the `dist` folder
+
+## Test:
+
+1. `yarn check`
+2. `yarn run lint --max-warnings=0 --no-fix`
