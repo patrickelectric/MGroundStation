@@ -3,12 +3,6 @@
     data-role="appbar"
     class="pos-absolute bg-darkCyan fg-white"
   >
-    <a
-      id="paneToggle"
-      href="#"
-      class="app-bar-item d-block d-none-lg"
-    ><span class="mif-menu" /></a>
-
     <div class="app-bar-container ml-auto">
       <div v-if="Object.keys(heartbeat).length != 0">
         Vehicle: {{ heartbeat.mavtype.type.substring(9) }} -
@@ -45,10 +39,6 @@
           </div>
         </div>
       </div>
-      <a
-        href="#"
-        class="app-bar-item"
-      />
     </div>
   </div>
 </template>
