@@ -8,6 +8,16 @@
   </div>
 
   <div
+    v-if="joysticks && !joysticks.length"
+    class="pos-fixed pos-center"
+  >
+    <h2 class="warning">
+      No joystick<br>
+      <small>Make sure that the joystick is connect, hit a key to make sure.</small>
+    </h2>
+  </div>
+
+  <div
     v-for="(joystick, index) in joysticks"
     :key="'joystick' + index"
     class="m-3"
