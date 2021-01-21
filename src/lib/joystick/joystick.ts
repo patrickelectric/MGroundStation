@@ -33,6 +33,8 @@ export type JoystickEvent = {
         stick: JoystickDetail.Stick,
         axis: JoystickDetail.Axis,
         value: number,
+        pressed: boolean,
+        button: number
     },
 }
 
