@@ -12,12 +12,12 @@
           <button class="pull-button m-0 bg-darkCyan-hover">
             <span class="mif-menu fg-white" />
           </button>
-          <h2
-            class="text-light m-0 fg-white text-bold pl-7"
+          <h4
+            class="text-light m-0 fg-white text-bold"
             style="line-height: 52px"
           >
             MGroundstation
-          </h2>
+          </h4>
         </div>
       </div>
 
@@ -236,11 +236,11 @@ body {
   background-color: #1a2226;
 }
 
-.navview.compacted .pull-button + h2 {
+.navview.compacted .pull-button + h4 {
   display: none;
 }
 
-.navview.expand .pull-button + h2 {
+.navview.expand .pull-button + h4 {
   display: flex;
 }
 
