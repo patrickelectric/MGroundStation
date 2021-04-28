@@ -65,6 +65,33 @@
             </a>
           </li>
 
+          <li>
+            <a
+              href="#"
+              class="dropdown-toggle"
+            >
+              <span class="icon"><span class="mif-table" /></span>
+              <span class="caption">Category</span>
+            </a>
+            <ul
+              class="navview-menu stay-open"
+              data-role="dropdown"
+            >
+              <li>
+                <a href="#table-classes">
+                  <span class="icon"><span class="mif-spinner2" /></span>
+                  <span class="caption">Sub category 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#table-component">
+                  <span class="icon"><span class="mif-spinner2" /></span>
+                  <span class="caption">Sub category 2</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="item-header">
             Documentation
           </li>
