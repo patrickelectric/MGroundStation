@@ -6,3 +6,4 @@ declare module "*.vue" {
 declare module "gamepad.js"
 declare module "vue-flight-indicators"
 declare module "@vue-leaflet/vue-leaflet"
+declare module "vue3-sfc-loader"

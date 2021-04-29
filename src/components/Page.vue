@@ -3,13 +3,16 @@
 </template>
 
 <script lang="ts">
-import { loadModule } from "vue3-sfc-loader/src/index"
+import { loadModule } from "vue3-sfc-loader"
+import Vue from "vue"
 import { defineComponent, defineAsyncComponent } from "vue"
 
 //const loader = new VueLoader()
 
 const options = {
-    moduleCache: undefined,
+    moduleCache: {
+        vue: Vue
+    },
     async getFile(url: string) {
         const res = await fetch(url)
         if ( !res.ok )

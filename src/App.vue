@@ -152,7 +152,7 @@
         class="content-inner h-100"
         style="overflow-y: auto"
       >
-        <Page />
+        <Page url="/test.vue" />
         <!--
         <div
           v-show="page == 'DashBoard'"
