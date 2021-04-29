@@ -152,6 +152,8 @@
         class="content-inner h-100"
         style="overflow-y: auto"
       >
+        <Page />
+        <!--
         <div
           v-show="page == 'DashBoard'"
           class="fill"
@@ -170,6 +172,7 @@
         >
           <Joystick />
         </div>
+        -->
       </div>
     </div>
   </div>
@@ -181,18 +184,23 @@ import "metro4/build/css/metro-all.min.css"
 import "uplot/dist/uPlot.min.css"
 
 import NavBar from "./components/NavBar.vue"
+import Page from "./components/Page.vue"
+/*
 import DashBoard from "./components/DashBoard.vue"
 import Parameters from "./components/Parameters.vue"
 import Joystick from "./components/Joystick.vue"
+*/
 import { defineComponent } from "vue"
+
 
 export default defineComponent({
     name: "App",
     components: {
         NavBar,
-        DashBoard,
-        Parameters,
-        Joystick,
+        Page,
+        //DashBoard,
+        //Parameters,
+        //Joystick,
     },
     data() {
         return {
