@@ -200,6 +200,17 @@ export default defineComponent({
             version: "0.1.0",
         }
     },
+    mounted() {
+        if (Notification.permission == "granted") {
+            return
+        }
+        Notification.requestPermission().then(function() {
+            var img = "https://bluerobotics.com/wp-content/uploads/2019/03/BlueRobotics-Logo.png"
+            var text = "Companion notification system enabled."
+            const notification = new Notification("Companion", { body: text, icon: img })
+            notification
+        })
+    },
     methods: {
         setPage(name: string) {
             this.page = name
