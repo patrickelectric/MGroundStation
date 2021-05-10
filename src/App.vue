@@ -16,7 +16,7 @@
             class="text-light m-0 fg-white text-bold"
             style="line-height: 52px"
           >
-            MGroundstation
+            Companion - v{{ version }}
           </h4>
         </div>
       </div>
@@ -196,7 +196,8 @@ export default defineComponent({
     },
     data() {
         return {
-            page: "DashBoard"
+            page: "DashBoard",
+            version: "0.1.0",
         }
     },
     methods: {
