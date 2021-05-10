@@ -71,7 +71,7 @@
               class="dropdown-toggle"
             >
               <span class="icon"><span class="mif-table" /></span>
-              <span class="caption">Category</span>
+              <span class="caption">Services</span>
             </a>
             <ul
               class="navview-menu stay-open"
