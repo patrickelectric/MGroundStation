@@ -186,6 +186,8 @@ import Parameters from "./components/Parameters.vue"
 import Joystick from "./components/Joystick.vue"
 import { defineComponent } from "vue"
 
+import * as API from "./lib/API/API"
+
 export default defineComponent({
     name: "App",
     components: {
@@ -205,10 +207,7 @@ export default defineComponent({
             return
         }
         Notification.requestPermission().then(function() {
-            var img = "https://bluerobotics.com/wp-content/uploads/2019/03/BlueRobotics-Logo.png"
-            var text = "Companion notification system enabled."
-            const notification = new Notification("Companion", { body: text, icon: img })
-            notification
+            API.notify({body: "Notiication enabled!"})
         })
     },
     methods: {
