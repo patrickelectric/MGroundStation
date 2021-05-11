@@ -113,6 +113,19 @@
               <span class="caption">About</span>
             </a>
           </li>
+
+          <li class="item-header">
+            Development
+          </li>
+          <li>
+            <a
+              href="#Development"
+              @click="setPage('Development')"
+            >
+              <span class="icon"><span class="mif-books fg-red" /></span>
+              <span class="caption">Development</span>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -159,6 +172,12 @@
           <DashBoard />
         </div>
         <div
+          v-show="page == 'Development'"
+          class="fill"
+        >
+          <Development />
+        </div>
+        <div
           v-show="page == 'Parameters'"
           class="fill"
         >
@@ -182,6 +201,7 @@ import "uplot/dist/uPlot.min.css"
 
 import NavBar from "./components/NavBar.vue"
 import DashBoard from "./components/DashBoard.vue"
+import Development from "./components/Development.vue"
 import Parameters from "./components/Parameters.vue"
 import Joystick from "./components/Joystick.vue"
 import { defineComponent } from "vue"
@@ -193,6 +213,7 @@ export default defineComponent({
     components: {
         NavBar,
         DashBoard,
+        Development,
         Parameters,
         Joystick,
     },
