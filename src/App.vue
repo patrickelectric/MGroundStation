@@ -207,7 +207,9 @@ export default defineComponent({
             return
         }
         Notification.requestPermission().then(function() {
-            API.notify({body: "Notiication enabled!"})
+            API.notify({body: "Notification enabled!"})
+            // We need to finish the Metro integration to have notifications working
+            Metro.notify.create("This is an internal notification", "Title", {})
         })
     },
     methods: {
